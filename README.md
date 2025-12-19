@@ -13,21 +13,8 @@ Welcome to LangChain Academy's Introduction to LangChain course!
 - The Chrome browser is recommended
 - Ensure you're using Python >=3.12, <3.14 [More info](#virtual-environments-and-python)
 - A package manager: [uv](https://docs.astral.sh/uv/) (recommended) or [pip](https://pypi.org/project/pip/)
-- Node.js and npx (only required for MCP server in module-2):
+- [Node.js](http://nodejs.org/) and npx (only required for MCP server in module-2):
 
-```bash
-# Install Node.js (includes npx)
-# On macOS with Homebrew:
-brew install node
-
-# On Ubuntu/Debian:
-curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
-# Verify installation:
-node --version
-npx --version
-```
 
 ### Installation
 
