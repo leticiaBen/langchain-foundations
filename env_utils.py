@@ -1,4 +1,8 @@
 # env_utils.py
+# this utility will check a students setup to verify it has
+# packages loaded, python and or node installed and api keys available
+# it references the pyproject.toml file and example.env for requirements
+
 import os
 import sys
 import shutil
@@ -11,6 +15,51 @@ def summarize_value(value: str) -> str:
     if lower in ("true", "false"):
         return lower
     return "****" + value[-4:] if len(value) > 4 else "****" + value
+
+def check_manual_installs(file_path: str):
+    """Check if manually installed applications are available in PATH.
+
+    Looks for a comment line like: # Manual installs for checking: app1, app2, app3
+
+    Args:
+        file_path: Path to the example.env file to check
+    """
+    if not os.path.exists(file_path):
+        return
+
+    manual_installs = []
+    with open(file_path, 'r') as f:
+        for line in f:
+            stripped = line.strip()
+            # Look for the manual installs comment
+            if stripped.startswith('# Manual installs for checking:'):
+                # Extract the comma-delimited list after the colon
+                apps_str = stripped.split(':', 1)[1].strip()
+                if apps_str:
+                    manual_installs = [app.strip() for app in apps_str.split(',')]
+                break
+
+    if not manual_installs:
+        return
+
+    # Check each application
+    issues = []
+    found = []
+
+    for app in manual_installs:
+        if shutil.which(app) is not None:
+            found.append(f"✅ {app}")
+        else:
+            issues.append(f"⚠️  {app} not found in PATH")
+
+    # Print results
+    print("Manual Installs Check:")
+    for item in found:
+        print(item)
+    for issue in issues:
+        print(issue)
+    print()
+
 
 def doublecheck_env(file_path: str):
     """Check environment variables against an example env file and print summaries.
@@ -224,6 +273,7 @@ def doublecheck_pkgs(pyproject_path="pyproject.toml", verbose=False):
 
 if __name__ == "__main__":
     check_venv()
+    check_manual_installs("example.env")
     load_dotenv()
     doublecheck_env("example.env")
     doublecheck_pkgs(pyproject_path="pyproject.toml", verbose=True)
