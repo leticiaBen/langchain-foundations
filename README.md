@@ -11,9 +11,9 @@ Welcome to LangChain Academy's Introduction to LangChain course!
 ### Prerequisites
 
 - The Chrome browser is recommended
-- Ensure you're using Python >=3.12, <3.14 [More info](#virtual-environments-and-python)
-- A package manager: [uv](https://docs.astral.sh/uv/) (recommended) or [pip](https://pypi.org/project/pip/)
-- [Node.js](http://nodejs.org/) and npx (only required for MCP server in module-2):
+- Ensure you're using Python >=3.12, <3.14 [More info](#python-virtual-environments)
+- A package/project manager: [uv](https://docs.astral.sh/uv/) (recommended) or [pip](https://pypi.org/project/pip/)
+    - note: `uv` is also required in Module 2, Lesson 1 to run the MCP server with `uvx`
 
 
 ### Installation
@@ -49,7 +49,7 @@ LANGSMITH_PROJECT=lca-lc-foundation
 #LANGSMITH_ENDPOINT=https://eu.api.smith.langchain.com
 ```
 
-Make a virtual environment and install dependencies
+Make a virtual environment and install dependencies. [More info](#python-virtual-environments)
 
 <details open>
 <summary>Using uv (recommended)</summary>
@@ -94,12 +94,10 @@ python env_utils.py
 
 </details>
 
-## 💡 Development Environment
-
-### Run Notebooks using either Jupyter or Cursor [More Info](#development-environment)
+### Run Notebooks [More Info](#development-environment)
 
 <details open>
-<summary>Using uv</summary>
+<summary>Using uv (recommended)</summary>
 
 ```bash
 uv run jupyter lab
@@ -149,21 +147,14 @@ This repository contains three Modules that serve as introductions to many of La
 
 ## 📖 Related Resources
 
-### Virtual Environments and Python
+### Python Virtual Environments 
 
 Managing your Python version is often best done with virtual environments. This allows you to select a Python version for the course independent of the system Python version.
 
 <details open>
 <summary>Using uv (recommended)</summary>
 
-You can select and install the Python version when creating the virtual environment with uv. For additional information, please see [uv](https://docs.astral.sh/uv/).
-
-```bash
-uv venv --python 3.12
-source .venv/bin/activate
-uv sync
-```
-
+`uv` will install a version of Python compatible with the versions specified in the `pyproject.toml` in the `.venv` directory when running the `uv sync` specified above. It will use this version when invoking with `uv run`. For additional information, please see [uv](https://docs.astral.sh/uv/).
 </details>
 
 <details>
@@ -205,8 +196,8 @@ For more information on LangSmith, see our docs [here](https://docs.langchain.co
 
 ### Environment Variables
 
-This course uses the [dotenv](https://pypi.org/project/python-dotenv) module to read key-value pairs from the .env file and set them in the environment in the Jupyter notebook. They do not need to be set globally in the terminal.
+This course uses the [dotenv](https://pypi.org/project/python-dotenv) module to read key-value pairs from the .env file and set them in the environment in the Jupyter notebook. They do not need to be set globally in your system environment.
 
 ### Development Environment
 
-Two popular IDEs that can use notebook files are [Jupyter](https://Jupyter.org/install) and [Cursor](https://cursor.com/download).  Jupyter can be installed locally in the virtual environment with pip if desired.
+The course uses [Jupyter](https://jupyter.org/) notebooks. Jupyter is installed and can be run as described above. Jupyter notebooks can also be edited and run in VSCode or other VSCode variants such as Windsurf or Cursor.  
