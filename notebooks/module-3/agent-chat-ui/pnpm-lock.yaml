@@ -2359,8 +2359,8 @@ packages:
     peerDependencies:
       next: '*'
 
-  langsmith@0.3.78:
-    resolution: {integrity: sha512-PVrog/DiTsiyOQ38GeZEIVadgk55/dfE3axagQksT3dt6KhFuRxhNaZrC0rp3dNW9RQJCm/c3tn+PiybwQNY0Q==}
+  langsmith@0.3.87:
+    resolution: {integrity: sha512-XXR1+9INH8YX96FKWc5tie0QixWz6tOqAsAKfcJyPkE0xPep+NDz0IQLR32q4bn10QK3LqD2HN6T3n6z1YLW7Q==}
     peerDependencies:
       '@opentelemetry/api': '*'
       '@opentelemetry/exporter-trace-otlp-proto': '*'
@@ -3877,7 +3877,7 @@ snapshots:
       camelcase: 6.3.0
       decamelize: 1.2.0
       js-tiktoken: 1.0.20
-      langsmith: 0.3.78(openai@4.100.0(ws@8.18.2)(zod@4.1.12))
+      langsmith: 0.3.87(openai@4.100.0(ws@8.18.2)(zod@4.1.12))
       mustache: 4.2.0
       p-queue: 6.6.2
       p-retry: 4.6.2
@@ -5776,13 +5776,12 @@ snapshots:
     dependencies:
       next: 15.4.8(@playwright/test@1.52.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
 
-  langsmith@0.3.78(openai@4.100.0(ws@8.18.2)(zod@4.1.12)):
+  langsmith@0.3.87(openai@4.100.0(ws@8.18.2)(zod@4.1.12)):
     dependencies:
       '@types/uuid': 10.0.0
       chalk: 4.1.2
       console-table-printer: 2.12.1
       p-queue: 6.6.2
-      p-retry: 4.6.2
       semver: 7.7.2
       uuid: 10.0.0
     optionalDependencies:
