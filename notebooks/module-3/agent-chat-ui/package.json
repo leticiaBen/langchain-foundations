@@ -87,7 +87,8 @@
   "pnpm": {
     "overrides": {
       "playwright": ">=1.55.1",
-      "@playwright/test": ">=1.55.1"
+      "@playwright/test": ">=1.55.1",
+      "prismjs": ">=1.30.0"
     }
   },
   "packageManager": "pnpm@10.5.1"

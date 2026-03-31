@@ -7,6 +7,7 @@ settings:
 overrides:
   playwright: '>=1.55.1'
   '@playwright/test': '>=1.55.1'
+  prismjs: '>=1.30.0'
 
 importers:
 
@@ -2996,10 +2997,6 @@ packages:
     resolution: {integrity: sha512-ey8Ls/+Di31eqzUxC46h8MksNuGx/n0AAC8uKpwFau4RPDYLuE3EXTp8N8G2vX2N7UC/+IXeNUnlWBGGcAG+Ig==}
     peerDependencies:
       react: '>=16.0.0'
-
-  prismjs@1.27.0:
-    resolution: {integrity: sha512-t13BGPUlFDR7wRB5kQDG4jjl7XeuH6jbJGt11JHPL96qwsEHNX2+68tFXqc1/k+/jALsbSWJKUOT/hcYAZ5LkA==}
-    engines: {node: '>=6'}
 
   prismjs@1.30.0:
     resolution: {integrity: sha512-DEvV2ZF2r2/63V+tK8hQvrR2ZGn10srHbXviTlcv7Kpzw8jWiNTqbVgjO3IY8RxrrOUF8VPMQQFysYYYv0YZxw==}
@@ -6542,8 +6539,6 @@ snapshots:
       clsx: 2.1.1
       react: 19.1.0
 
-  prismjs@1.27.0: {}
-
   prismjs@1.30.0: {}
 
   prop-types@15.8.1:
@@ -6677,7 +6672,7 @@ snapshots:
     dependencies:
       hastscript: 6.0.0
       parse-entities: 2.0.0
-      prismjs: 1.27.0
+      prismjs: 1.30.0
 
   regexp.prototype.flags@1.5.4:
     dependencies:
