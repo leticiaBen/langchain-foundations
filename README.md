@@ -1,12 +1,63 @@
-# 🔗 Introduction to LangChain - Python
+# 🔗 LangChain Foundations: Building AI Agents in Python
 
-## Introduction
+My hands-on work through LangChain Academy's **[Introduction to LangChain (Python)](https://academy.langchain.com/courses/foundation-introduction-to-langchain-python)** course. I use this repo to learn how to build LLM agents with **LangChain v1** and **LangGraph**: from a single model call up to multi-agent systems and production patterns like middleware and human-in-the-loop.
 
-Welcome to LangChain Academy's **Introduction to LangChain** course!
+> The course material (notebooks, exercises, MIT license) comes from [langchain-ai/lca-lc-foundations](https://github.com/langchain-ai/lca-lc-foundations). This repo is my own working copy, where I run, modify, and extend it.
 
-This repository is the companion to the course located [HERE](https://academy.langchain.com/courses/foundation-introduction-to-langchain-python).
+## 🧠 What this project covers
+
+| Module | Concepts | Hands-on project |
+|---|---|---|
+| **1. Create an Agent** | Chat models from several providers (OpenAI, Anthropic, Google Gemini), prompting, tool calling, web search (Tavily), short-term memory, multimodal (image) messages | 🍳 **Personal Chef**: a web-searching agent with memory that suggests recipes from leftover ingredients |
+| **2. Advanced Agents** | Model Context Protocol (MCP) servers, runtime context and custom state, multi-agent systems (supervisor and sub-agents), RAG over a PDF, SQL agents | 💍 **Wedding Planner**: a coordinator agent that delegates to travel (flights via MCP), venue (web search), and playlist (SQL) sub-agents |
+| **3. Production-Ready Agents** | Middleware, managing long conversations (summarizing and trimming), human-in-the-loop approvals, dynamic models, prompts, and tools | 📧 **Email Assistant**: authenticates the user, unlocks inbox tools dynamically, drafts replies, and pauses for human approval before sending |
+
+## 🛠️ Tech stack
+
+- **Python 3.13**, managed with **[uv](https://docs.astral.sh/uv/)**
+- **LangChain v1** (`create_agent`, `init_chat_model`, middleware)
+- **LangGraph**: agent runtime, checkpointing, streaming
+- **LangGraph Server and Studio** (`langgraph dev`) for running and debugging agents visually
+- **LangSmith** for tracing and observability
+- **Model providers:** OpenAI, Azure OpenAI, Anthropic, Google Gemini
+- **Integrations:** Tavily web search, MCP adapters, SQLite (Chinook DB), PDF loaders and text splitters
+- Jupyter notebooks
+
+## ⚙️ My setup notes
+
+- Upgraded the LangGraph local server (`langgraph-api` 0.11 → 0.16) after the old version reached end of life, and pinned the upgrade in `uv.lock` so `uv run` doesn't roll it back.
+- Configured basedpyright to resolve imports from the project's `.venv`.
+- Connected an **Azure OpenAI** deployment through the OpenAI SDK's v1-compatible endpoint, with credentials kept in `.env` (never committed).
+
+<details>
+<summary>Example: calling an Azure OpenAI deployment</summary>
+
+```python
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
+
+load_dotenv()
+
+client = OpenAI(
+    base_url=os.environ["AZURE_OPENAI_BASE_URL"],  # https://<resource>.services.ai.azure.com/openai/v1/
+    api_key=os.environ["AZURE_OPENAI_API_KEY"],
+)
+
+resp = client.chat.completions.create(
+    model="gpt-5-mini",  # the deployment name
+    messages=[{"role": "user", "content": "Hello!"}],
+)
+print(resp.choices[0].message.content)
+```
+
+</details>
 
 ---
+
+# 📘 Course setup guide
+
+*The rest of this README is the original course guide, kept for anyone who wants to run the notebooks.*
 
 ## 🚀 Setup
 
